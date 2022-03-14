@@ -38,7 +38,7 @@ resource "kubernetes_namespace" "argo-ns" {
 # https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release
 resource "helm_release" "argocd" {
   name       = "msur"
-  chart      = "argo-cd"
+  chart      = "charts/argo-cd"
   repository = "https://argoproj.github.io/argo-helm"
   namespace  = "argocd"
   version    = "2.2.5"
