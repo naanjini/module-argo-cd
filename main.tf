@@ -41,5 +41,5 @@ resource "helm_release" "argocd" {
   chart      = "argo-cd"
   repository = "https://argoproj.github.io/argo-helm"
   namespace  = "argocd"
-  version    = "2.2.5" # 버전을 명시하지 않을 경우, v3.x 버전이 설치되며 호환성 오류가 발생
+  # version    = "2.2.5" # 버전을 명시하지 않을 경우, v3.x 버전이 설치되며 호환성 오류가 발생
 }
