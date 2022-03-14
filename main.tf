@@ -28,7 +28,7 @@ provider "helm" {
 
 # 네임스페이스 생성
 # https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace
-resource "kubernetes_namespace" "argocd" {
+resource "kubernetes_namespace" "argo-ns" {
   metadata {
     name = "argocd"
   }
@@ -37,11 +37,8 @@ resource "kubernetes_namespace" "argocd" {
 # 헬름 공급자를 사용해 Argo CD를 설치
 # https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release
 resource "helm_release" "argocd" {
-  depends_on = [kubernetes_namespace.argocd]
-
   name       = "msur"
   chart      = "argo-cd"
   repository = "https://argoproj.github.io/argo-helm"
   namespace  = "argocd"
-  version    = "2.1" #2.5" # 버전을 명시하지 않을 경우, v3.x 버전이 설치되며 호환성 오류가 발생
 }
